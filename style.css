@@ -527,7 +527,37 @@ h2 {
 /* ============================================================
    SERVICES
    ============================================================ */
-.services-section { background: var(--bg2); }
+.services-section,
+.process-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255,109,0,0.14), transparent 34%),
+    radial-gradient(circle at 88% 20%, rgba(124,58,237,0.16), transparent 38%),
+    linear-gradient(135deg, rgba(255,255,255,0.035), rgba(255,109,0,0.025)),
+    var(--bg2);
+}
+
+.services-section::before,
+.process-section::before {
+  content: "";
+  position: absolute;
+  inset: 28px max(24px, calc((100vw - 1180px) / 2)) 28px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,109,0,0.055)),
+    rgba(9,8,15,0.38);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  pointer-events: none;
+}
+
+.services-section .container,
+.process-section .container {
+  position: relative;
+  z-index: 1;
+}
 
 .services-grid {
   display: grid;
@@ -596,7 +626,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
+  padding: 26px 20px 0;
 }
 
 .p-circle {
