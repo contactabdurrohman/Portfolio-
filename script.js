@@ -99,6 +99,8 @@ const slotLabels = {
   'brand-kit': 'Brand Kit'
 };
 
+const upcomingSlots = new Set(['video', 'sound']);
+
 const preloadedMedia = {
     "design":  [
                    {
@@ -340,7 +342,7 @@ async function initMedia() {
   const loadedFromFolder = await loadFolderMedia();
   if (loadedFromFolder) return;
 
-  loadPreloadedMedia();
+  await loadPreloadedMedia();
   loadSavedUploads();
 }
 
@@ -390,16 +392,31 @@ async function saveFilesToFolder(slot, title, description, files) {
     return false;
   }
 }
-function loadPreloadedMedia() {
+async function loadPreloadedMedia() {
+  const metadata = await loadStaticMetadata();
   Object.entries(preloadedMedia).forEach(([slot, files]) => {
-    files.forEach((file, index) => {
+    const prepared = files
+      .map((file, index) => {
+        const saved = metadata[`${slot}/${file.fileName}`] || {};
+        return {
+          file,
+          index,
+          saved,
+          pinnedAt: Number(saved.pinnedAt || 0)
+        };
+      })
+      .sort((a, b) => b.pinnedAt - a.pinnedAt || a.index - b.index);
+
+    prepared.forEach(({ file, index, saved }) => {
       const item = {
         id: `preloaded-${slot}-${index}`,
         url: file.url,
+        externalUrl: file.externalUrl,
         fileName: file.fileName,
-        title: cleanFileName(file.fileName),
-        description: file.description || defaultDescription(slot),
-        isVideo: Boolean(file.isVideo)
+        title: saved.title || file.title || cleanFileName(file.fileName),
+        description: saved.description || file.description || defaultDescription(slot),
+        isVideo: Boolean(file.isVideo),
+        pinnedAt: Number(saved.pinnedAt || 0)
       };
 
       uploadStore[slot].push(item);
@@ -412,10 +429,34 @@ function loadPreloadedMedia() {
   applyActiveFilter();
 }
 
+async function loadStaticMetadata() {
+  try {
+    const response = await fetch('portfolio-media.json', { cache: 'no-store' });
+    if (!response.ok) return {};
+    return await response.json();
+  } catch {
+    return {};
+  }
+}
+
 function renderSlotCard(slot) {
   const card = document.querySelector(`.work-card[data-slot="${slot}"]`);
   const items = uploadStore[slot] || [];
   if (!card) return;
+
+  if (upcomingSlots.has(slot)) {
+    card.querySelector('.work-thumb').innerHTML = `
+      <div class="work-upcoming">
+        <span>Upcoming</span>
+      </div>
+    `;
+    card.querySelector('.work-info').innerHTML = `
+      <span class="work-tag">${slotLabels[slot]}</span>
+      <h3>Upcoming</h3>
+      <p>New video projects will be added soon.</p>
+    `;
+    return;
+  }
 
   if (!items.length) {
     card.querySelector('.work-thumb').innerHTML = originalSlots[slot].thumb;
@@ -428,14 +469,7 @@ function renderSlotCard(slot) {
   const info = card.querySelector('.work-info');
   thumb.innerHTML = '';
 
-  const media = document.createElement(first.isVideo ? 'video' : 'img');
-  media.src = first.url;
-  media.alt = first.fileName;
-  if (first.isVideo) {
-    media.controls = true;
-    media.muted = true;
-    media.playsInline = true;
-  }
+  const media = createPreviewMedia(first);
   media.addEventListener('click', e => {
     e.stopPropagation();
     openMediaViewer(first);
@@ -465,14 +499,7 @@ function createGalleryItem(slot, upload) {
   item.dataset.slot = slot;
   item.dataset.id = upload.id;
 
-  const media = document.createElement(upload.isVideo ? 'video' : 'img');
-  media.src = upload.url;
-  media.alt = upload.fileName;
-  if (upload.isVideo) {
-    media.controls = true;
-    media.muted = true;
-    media.playsInline = true;
-  }
+  const media = createPreviewMedia(upload);
   media.addEventListener('click', e => {
     e.stopPropagation();
     openMediaViewer(upload);
@@ -510,6 +537,29 @@ function createGalleryItem(slot, upload) {
   item.appendChild(edit);
   item.appendChild(del);
   return item;
+}
+
+function createPreviewMedia(upload) {
+  if (upload.externalUrl) {
+    const preview = document.createElement('div');
+    preview.className = 'drive-preview';
+    preview.innerHTML = `
+      <span class="drive-preview-icon">Drive</span>
+      <strong>${escapeHtml(upload.title || upload.fileName)}</strong>
+      <small>Open folder</small>
+    `;
+    return preview;
+  }
+
+  const media = document.createElement(upload.isVideo ? 'video' : 'img');
+  media.src = upload.url;
+  media.alt = upload.fileName;
+  if (upload.isVideo) {
+    media.controls = true;
+    media.muted = true;
+    media.playsInline = true;
+  }
+  return media;
 }
 
 function openSlotViewer(slot) {
@@ -638,6 +688,11 @@ function openEditViewer(slot, id) {
 }
 
 function openMediaViewer(upload) {
+  if (upload.externalUrl) {
+    window.open(upload.externalUrl, '_blank', 'noopener');
+    return;
+  }
+
   closeMediaViewer();
 
   const modal = document.createElement('div');
