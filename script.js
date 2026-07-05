@@ -922,7 +922,9 @@ function escapeAttribute(value) {
 const msgForm  = document.getElementById('msgForm');
 const formNote = document.getElementById('formNote');
 
-msgForm.addEventListener('submit', e => {
+const contactEndpoint = 'https://formsubmit.co/ajax/contact.abdurrohman@gmail.com';
+
+msgForm.addEventListener('submit', async e => {
   e.preventDefault();
 
   const name    = document.getElementById('fname').value.trim();
@@ -936,18 +938,40 @@ msgForm.addEventListener('submit', e => {
     return;
   }
 
-  /* Build mailto link as fallback */
-  const subject = encodeURIComponent(`Portfolio Enquiry â€” ${service || 'General'}`);
-  const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nService: ${service}\n\n${msg}`);
-  window.location.href = `mailto:contact.abdurrohman@gmail.com?subject=${subject}&body=${body}`;
+  formNote.style.color = '#fbbf24';
+  formNote.textContent = 'Sending message...';
 
-  formNote.style.color = '#34d399';
-  formNote.textContent = 'âœ“ Opening your email clientâ€¦';
+  try {
+    const response = await fetch(contactEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        service: service || 'General',
+        message: msg,
+        _subject: `Portfolio Enquiry - ${service || 'General'}`,
+        _template: 'table',
+        _captcha: 'false'
+      })
+    });
+
+    if (!response.ok) throw new Error('Message failed');
+
+    formNote.style.color = '#34d399';
+    formNote.textContent = 'Message sent successfully.';
+    msgForm.reset();
+  } catch {
+    formNote.style.color = '#f87171';
+    formNote.textContent = 'Message could not be sent. Please try again later.';
+  }
 
   setTimeout(() => {
-    msgForm.reset();
     formNote.textContent = '';
-  }, 4000);
+  }, 5000);
 });
 
 /* ---- Smooth active nav on scroll ---- */
