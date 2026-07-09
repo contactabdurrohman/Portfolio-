@@ -102,165 +102,142 @@ const slotLabels = {
 const upcomingSlots = new Set(['video', 'sound']);
 
 const preloadedMedia = {
-    "design":  [
-                   {
-                       "fileName":  "Mahfil Poster.jpg",
-                       "url":  "Graphic Design/Mahfil%20Poster.jpg",
-                       "title":  "Mahfil Poster",
-                       "description":  "Design portfolio project.",
-                       "isVideo":  false
-                   },
-                   {
-                       "fileName":  "poster 1.jpg",
-                       "url":  "Graphic Design/poster%201.jpg",
-                       "title":  "poster 1",
-                       "description":  "Design portfolio project.",
-                       "isVideo":  false
-                   },
-                   {
-                       "fileName":  "Ps Assignment 4.5.jpg",
-                       "url":  "Graphic Design/Ps%20Assignment%204.5.jpg",
-                       "title":  "Ps Assignment 4.5",
-                       "description":  "Design portfolio project.",
-                       "isVideo":  false
-                   },
-                   {
-                       "fileName":  "Ps Assignment 4.6.jpg",
-                       "url":  "Graphic Design/Ps%20Assignment%204.6.jpg",
-                       "title":  "Ps Assignment 4.6",
-                       "description":  "Design portfolio project.",
-                       "isVideo":  false
-                   }
-               ],
-    "video":  [
-                  {
-                      "fileName":  "Video Editing Google Drive",
-                      "title":  "Video Editing Projects",
-                      "description":  "Watch full video editing portfolio on Google Drive.",
-                      "externalUrl":  "https://drive.google.com/drive/folders/1XSLXK1MZdoB5UrP8AITLX9Y7CTIv0LJn?usp=drive_link",
-                      "isVideo":  false
-                  }
-              ],
-    "logo":  [
-                 {
-                     "fileName":  "Artboard 3100.png",
-                     "url":  "Logo Design/Artboard%203100.png",
-                     "title":  "Artboard 3100",
-                     "description":  "Logo Design portfolio project.",
-                     "isVideo":  false
-                 },
-                 {
-                     "fileName":  "images-Photoroom.png",
-                     "url":  "Logo Design/images-Photoroom.png",
-                     "title":  "images Photoroom",
-                     "description":  "Logo Design portfolio project.",
-                     "isVideo":  false
-                 },
-                 {
-                     "fileName":  "Sarfaraz Logo.png",
-                     "url":  "Logo Design/Sarfaraz%20Logo.png",
-                     "title":  "Sarfaraz Logo",
-                     "description":  "Logo Design portfolio project.",
-                     "isVideo":  false
-                 },
-                 {
-                     "fileName":  "White.png",
-                     "url":  "Logo Design/White.png",
-                     "title":  "White",
-                     "description":  "Logo Design portfolio project.",
-                     "isVideo":  false
-                 }
-             ],
-    "product":  [
-                    {
-                        "fileName":  "ChatGPT Image May 24, 2026, 10_46_29 PM.png",
-                        "url":  "Product Design/ChatGPT%20Image%20May%2024%2C%202026%2C%2010_46_29%20PM.png",
-                        "title":  "ChatGPT Image May 24, 2026, 10 46 29 PM",
-                        "description":  "Product Design portfolio project.",
-                        "isVideo":  false
-                    },
-                    {
-                        "fileName":  "ChatGPT Image May 8, 2026, 08_57_26 PM.png",
-                        "url":  "Product Design/ChatGPT%20Image%20May%208%2C%202026%2C%2008_57_26%20PM.png",
-                        "title":  "Punjabi poster design",
-                        "description":  "Product Design portfolio project.",
-                        "isVideo":  false
-                    },
-                    {
-                        "fileName":  "ChatGPT Image May 9, 2026, 03_47_37 PM.png",
-                        "url":  "Product Design/ChatGPT%20Image%20May%209%2C%202026%2C%2003_47_37%20PM.png",
-                        "title":  "ChatGPT Image May 9, 2026, 03 47 37 PM",
-                        "description":  "Product Design portfolio project.",
-                        "isVideo":  false
-                    },
-                    {
-                        "fileName":  "Ps Assignment 3.1.jpg",
-                        "url":  "Product Design/Ps%20Assignment%203.1.jpg",
-                        "title":  "Ps Assignment 3.1",
-                        "description":  "Product Design portfolio project.",
-                        "isVideo":  false
-                    },
-                    {
-                        "fileName":  "Ps Assignment 4.3.jpg",
-                        "url":  "Product Design/Ps%20Assignment%204.3.jpg",
-                        "title":  "Ps Assignment 4.3",
-                        "description":  "Product Design portfolio project.",
-                        "isVideo":  false
-                    },
-                    {
-                        "fileName":  "فخامة (2).jpg",
-                        "url":  "Product Design/%D9%81%D8%AE%D8%A7%D9%85%D8%A9%20(2).jpg",
-                        "title":  "فخامة (2)",
-                        "description":  "Product Design portfolio project.",
-                        "isVideo":  false
-                    }
-                ],
-    "sound":  [
-                  {
-                      "fileName":  "Motion Video Google Drive",
-                      "title":  "Motion Video Projects",
-                      "description":  "Watch full motion video portfolio on Google Drive.",
-                      "externalUrl":  "https://drive.google.com/drive/folders/1YxNDikDOc1zs6nU71AEsukYjbRMPuSgT?usp=drive_link",
-                      "isVideo":  false
-                  }
-              ],
-    "brand-kit":  [
-                      {
-                          "fileName":  "ChatGPT Image May 24, 2026, 10_46_29 PM.png",
-                          "url":  "Brand/ChatGPT%20Image%20May%2024%2C%202026%2C%2010_46_29%20PM.png",
-                          "title":  "Eid poster Design",
-                          "description":  "Brand Kit portfolio project.",
-                          "isVideo":  false
-                      },
-                      {
-                          "fileName":  "ChatGPT Image May 8, 2026, 08_57_26 PM.png",
-                          "url":  "Brand/ChatGPT%20Image%20May%208%2C%202026%2C%2008_57_26%20PM.png",
-                          "title":  "ChatGPT Image May 8, 2026, 08 57 26 PM",
-                          "description":  "Brand Kit portfolio project.",
-                          "isVideo":  false
-                      },
-                      {
-                          "fileName":  "ChatGPT Image May 9, 2026, 03_47_37 PM.png",
-                          "url":  "Brand/ChatGPT%20Image%20May%209%2C%202026%2C%2003_47_37%20PM.png",
-                          "title":  "ChatGPT Image May 9, 2026, 03 47 37 PM",
-                          "description":  "Brand Kit portfolio project.",
-                          "isVideo":  false
-                      },
-                      {
-                          "fileName":  "Sarfaraz Cover.png",
-                          "url":  "Brand/Sarfaraz%20Cover.png",
-                          "title":  "Sarfaraz Cover",
-                          "description":  "Brand Kit portfolio project.",
-                          "isVideo":  false
-                      },
-                      {
-                          "fileName":  "فخامة (2).jpg",
-                          "url":  "Brand/%D9%81%D8%AE%D8%A7%D9%85%D8%A9%20(2).jpg",
-                          "title":  "فخامة (2)",
-                          "description":  "Brand Kit portfolio project.",
-                          "isVideo":  false
-                      }
-                  ]
+  "design": [
+    {
+      "fileName": "Mahfil Poster.jpg",
+      "url": "Graphic Design/Mahfil%20Poster.jpg",
+      "title": "Mahfil Poster",
+      "description": "Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "poster 1.jpg",
+      "url": "Graphic Design/poster%201.jpg",
+      "title": "poster 1",
+      "description": "Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "Ps Assignment 4.5.jpg",
+      "url": "Graphic Design/Ps%20Assignment%204.5.jpg",
+      "title": "Ps Assignment 4.5",
+      "description": "Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "Ps Assignment 4.6.jpg",
+      "url": "Graphic Design/Ps%20Assignment%204.6.jpg",
+      "title": "Ps Assignment 4.6",
+      "description": "Design portfolio project.",
+      "isVideo": false
+    }
+  ],
+  "video": [],
+  "logo": [
+    {
+      "fileName": "Artboard 3100.png",
+      "url": "Logo Design/Artboard%203100.png",
+      "title": "Artboard 3100",
+      "description": "Logo Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "Sarfaraz Logo.png",
+      "url": "Logo Design/Sarfaraz%20Logo.png",
+      "title": "Sarfaraz Logo",
+      "description": "Logo Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "White.png",
+      "url": "Logo Design/White.png",
+      "title": "White",
+      "description": "Logo Design portfolio project.",
+      "isVideo": false
+    }
+  ],
+  "product": [
+    {
+      "fileName": "ChatGPT Image May 24, 2026, 10_46_29 PM.png",
+      "url": "Product Design/ChatGPT%20Image%20May%2024%2C%202026%2C%2010_46_29%20PM.png",
+      "title": "ChatGPT Image May 24, 2026, 10 46 29 PM",
+      "description": "Product Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "ChatGPT Image May 8, 2026, 08_57_26 PM.png",
+      "url": "Product Design/ChatGPT%20Image%20May%208%2C%202026%2C%2008_57_26%20PM.png",
+      "title": "Punjabi poster design",
+      "description": "Product Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "ChatGPT Image May 9, 2026, 03_47_37 PM.png",
+      "url": "Product Design/ChatGPT%20Image%20May%209%2C%202026%2C%2003_47_37%20PM.png",
+      "title": "ChatGPT Image May 9, 2026, 03 47 37 PM",
+      "description": "Product Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "Ps Assignment 3.1.jpg",
+      "url": "Product Design/Ps%20Assignment%203.1.jpg",
+      "title": "Ps Assignment 3.1",
+      "description": "Product Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "Ps Assignment 4.3.jpg",
+      "url": "Product Design/Ps%20Assignment%204.3.jpg",
+      "title": "Ps Assignment 4.3",
+      "description": "Product Design portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "فخامة (2).jpg",
+      "url": "Product Design/%D9%81%D8%AE%D8%A7%D9%85%D8%A9%20(2).jpg",
+      "title": "فخامة (2)",
+      "description": "Product Design portfolio project.",
+      "isVideo": false
+    }
+  ],
+  "sound": [],
+  "brand-kit": [
+    {
+      "fileName": "Brand Presentation.png",
+      "url": "Brand/Brand%20Presentation.png",
+      "title": "Brand Presentation",
+      "description": "Brand Kit portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "Sarfaraz Cover.png",
+      "url": "Brand/Sarfaraz%20Cover.png",
+      "title": "Sarfaraz Cover",
+      "description": "Brand Kit portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "Sarfaraz Logo.png",
+      "url": "Brand/Sarfaraz%20Logo.png",
+      "title": "Sarfaraz Logo",
+      "description": "Brand Kit portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "Sarfaraz.jpg",
+      "url": "Brand/Sarfaraz.jpg",
+      "title": "Sarfaraz",
+      "description": "Brand Kit portfolio project.",
+      "isVideo": false
+    },
+    {
+      "fileName": "فخامة (2).jpg",
+      "url": "Brand/%D9%81%D8%AE%D8%A7%D9%85%D8%A9%20(2).jpg",
+      "title": "فخامة (2)",
+      "description": "Brand Kit portfolio project.",
+      "isVideo": false
+    }
+  ]
 };
 
 workCards.forEach(card => {
