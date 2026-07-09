@@ -1,30 +1,13 @@
 {
+  "logo/Sarfaraz Logo.png": {
+    "pinnedAt": 1783606979354,
+    "updatedAt": "2026-07-09T14:22:59.354Z"
+  },
   "brand-kit/Sarfaraz Cover.png": {
     "title": "Sarfaraz Cover",
     "description": "Brand Kit portfolio project.",
     "uploaded": true,
-    "updatedAt": "2026-07-09T13:45:19.2301795Z",
+    "updatedAt": "2026-07-09T14:24:57.909Z",
     "pinnedAt": 9999999999999
-  },
-  "logo/Artboard 3100.png": {
-    "title": "Artboard 3100",
-    "description": "Logo Design portfolio project.",
-    "uploaded": true,
-    "updatedAt": "2026-07-04T10:28:55.556Z",
-    "pinnedAt": 0
-  },
-  "logo/Sarfaraz Logo.png": {
-    "pinnedAt": 1783162488617,
-    "updatedAt": "2026-07-04T10:54:48.617Z"
-  },
-  "product/ChatGPT Image May 8, 2026, 08_57_26 PM.png": {
-    "title": "Punjabi poster design",
-    "description": "Product Design portfolio project.",
-    "updatedAt": "2026-07-04T04:53:52.500Z",
-    "pinnedAt": 0
-  },
-  "sound/Mirinda.mp4": {
-    "pinnedAt": 1783162513995,
-    "updatedAt": "2026-07-04T10:55:13.995Z"
   }
 }

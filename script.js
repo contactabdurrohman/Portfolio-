@@ -135,13 +135,6 @@ const preloadedMedia = {
   "video": [],
   "logo": [
     {
-      "fileName": "Artboard 3100.png",
-      "url": "Logo Design/Artboard%203100.png",
-      "title": "Artboard 3100",
-      "description": "Logo Design portfolio project.",
-      "isVideo": false
-    },
-    {
       "fileName": "Sarfaraz Logo.png",
       "url": "Logo Design/Sarfaraz%20Logo.png",
       "title": "Sarfaraz Logo",
@@ -167,7 +160,7 @@ const preloadedMedia = {
     {
       "fileName": "ChatGPT Image May 8, 2026, 08_57_26 PM.png",
       "url": "Product Design/ChatGPT%20Image%20May%208%2C%202026%2C%2008_57_26%20PM.png",
-      "title": "Punjabi poster design",
+      "title": "ChatGPT Image May 8, 2026, 08 57 26 PM",
       "description": "Product Design portfolio project.",
       "isVideo": false
     },
