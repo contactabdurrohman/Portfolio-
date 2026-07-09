@@ -1,49 +1,52 @@
-{
-  "brand-kit/ChatGPT Image May 24, 2026, 10_46_29 PM.png": {
-    "title": "Eid poster Design",
-    "description": "Brand Kit portfolio project.",
-    "updatedAt": "2026-07-04T04:52:16.581Z",
-    "pinnedAt": 0
-  },
-  "brand-kit/Sarfaraz Cover.png": {
-    "pinnedAt": 1783162526988,
-    "updatedAt": "2026-07-04T10:55:26.988Z"
-  },
-  "logo/Artboard 3100.png": {
-    "title": "Artboard 3100",
-    "description": "Logo Design portfolio project.",
-    "uploaded": true,
-    "updatedAt": "2026-07-04T10:28:55.556Z",
-    "pinnedAt": 0
-  },
-  "logo/images-Photoroom.png": {
-    "title": "images Photoroom",
-    "description": "Logo Design portfolio project.",
-    "uploaded": true,
-    "updatedAt": "2026-07-04T14:59:20.861Z"
-  },
-  "logo/Sarfaraz Logo.png": {
-    "pinnedAt": 1783162488617,
-    "updatedAt": "2026-07-04T10:54:48.617Z"
-  },
-  "logo/Sunnah Logo.png": {
-    "title": "Sunnah Logo",
-    "description": "Logo Design portfolio project.",
-    "uploaded": true,
-    "updatedAt": "2026-07-04T10:56:49.886Z"
-  },
-  "product/ChatGPT Image May 8, 2026, 08_57_26 PM.png": {
-    "title": "Punjabi poster design",
-    "description": "Product Design portfolio project.",
-    "updatedAt": "2026-07-04T04:53:52.500Z",
-    "pinnedAt": 0
-  },
-  "product/فخامة (2).jpg": {
-    "pinnedAt": 1783162502278,
-    "updatedAt": "2026-07-04T10:55:02.278Z"
-  },
-  "sound/Mirinda.mp4": {
-    "pinnedAt": 1783162513995,
-    "updatedAt": "2026-07-04T10:55:13.995Z"
-  }
+﻿{
+    "brand-kit/ChatGPT Image May 24, 2026, 10_46_29 PM.png":  {
+                                                                  "title":  "Eid poster Design",
+                                                                  "description":  "Brand Kit portfolio project.",
+                                                                  "updatedAt":  "2026-07-04T04:52:16.581Z",
+                                                                  "pinnedAt":  0
+                                                              },
+    "brand-kit/Sarfaraz Cover.png":  {
+                                         "title":  "Sarfaraz Cover",
+                                         "description":  "Brand Kit portfolio project.",
+                                         "uploaded":  true,
+                                         "updatedAt":  "2026-07-09T13:45:19.2617455Z",
+                                         "pinnedAt":  9999999999999
+                                     },
+    "logo/Artboard 3100.png":  {
+                                   "title":  "Artboard 3100",
+                                   "description":  "Logo Design portfolio project.",
+                                   "uploaded":  true,
+                                   "updatedAt":  "2026-07-04T10:28:55.556Z",
+                                   "pinnedAt":  0
+                               },
+    "logo/images-Photoroom.png":  {
+                                      "title":  "images Photoroom",
+                                      "description":  "Logo Design portfolio project.",
+                                      "uploaded":  true,
+                                      "updatedAt":  "2026-07-04T14:59:20.861Z"
+                                  },
+    "logo/Sarfaraz Logo.png":  {
+                                   "pinnedAt":  1783162488617,
+                                   "updatedAt":  "2026-07-04T10:54:48.617Z"
+                               },
+    "logo/Sunnah Logo.png":  {
+                                 "title":  "Sunnah Logo",
+                                 "description":  "Logo Design portfolio project.",
+                                 "uploaded":  true,
+                                 "updatedAt":  "2026-07-04T10:56:49.886Z"
+                             },
+    "product/ChatGPT Image May 8, 2026, 08_57_26 PM.png":  {
+                                                               "title":  "Punjabi poster design",
+                                                               "description":  "Product Design portfolio project.",
+                                                               "updatedAt":  "2026-07-04T04:53:52.500Z",
+                                                               "pinnedAt":  0
+                                                           },
+    "product/ÙØ®Ø§Ù…Ø© (2).jpg":  {
+                                       "pinnedAt":  1783162502278,
+                                       "updatedAt":  "2026-07-04T10:55:02.278Z"
+                                   },
+    "sound/Mirinda.mp4":  {
+                              "pinnedAt":  1783162513995,
+                              "updatedAt":  "2026-07-04T10:55:13.995Z"
+                          }
 }
