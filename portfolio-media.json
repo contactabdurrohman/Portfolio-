@@ -7,7 +7,21 @@
     "title": "Sarfaraz Cover",
     "description": "Brand Kit portfolio project.",
     "uploaded": true,
-    "updatedAt": "2026-07-09T14:24:57.909Z",
+    "updatedAt": "2026-07-10T03:50:56.178Z",
+    "pinnedAt": 9999999999998
+  },
+  "brand-kit/Brand Presentation.png": {
+    "title": "Brand Presentation",
+    "description": "Brand Kit portfolio project.",
+    "uploaded": true,
+    "updatedAt": "2026-07-10T03:50:56.178Z",
     "pinnedAt": 9999999999999
+  },
+  "brand-kit/Sarfaraz Logo.png": {
+    "title": "Sarfaraz Logo",
+    "description": "Brand Kit portfolio project.",
+    "uploaded": true,
+    "updatedAt": "2026-07-10T03:50:56.178Z",
+    "pinnedAt": 9999999999997
   }
 }

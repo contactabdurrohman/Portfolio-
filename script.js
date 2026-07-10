@@ -196,16 +196,16 @@ const preloadedMedia = {
   "sound": [],
   "brand-kit": [
     {
-      "fileName": "Sarfaraz Cover.png",
-      "url": "Brand/Sarfaraz%20Cover.png",
-      "title": "Sarfaraz Cover",
+      "fileName": "Brand Presentation.png",
+      "url": "Brand/Brand%20Presentation.png",
+      "title": "Brand Presentation",
       "description": "Brand Kit portfolio project.",
       "isVideo": false
     },
     {
-      "fileName": "Brand Presentation.png",
-      "url": "Brand/Brand%20Presentation.png",
-      "title": "Brand Presentation",
+      "fileName": "Sarfaraz Cover.png",
+      "url": "Brand/Sarfaraz%20Cover.png",
+      "title": "Sarfaraz Cover",
       "description": "Brand Kit portfolio project.",
       "isVideo": false
     },
