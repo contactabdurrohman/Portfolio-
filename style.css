@@ -476,6 +476,62 @@ h2 {
   background: var(--bg3);
 }
 
+.playlist-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(9,8,15,0.04), rgba(9,8,15,0.52)),
+    var(--playlist-thumb) center / cover no-repeat,
+    var(--bg3);
+}
+
+.playlist-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0 24%, rgba(9,8,15,0.34) 74%);
+}
+
+.playlist-play {
+  position: relative;
+  z-index: 1;
+  width: 72px;
+  height: 52px;
+  border-radius: 16px;
+  background: #ff0033;
+  box-shadow: 0 16px 42px rgba(0,0,0,0.32);
+}
+
+.playlist-play::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid #fff;
+}
+
+.playlist-preview strong {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  z-index: 1;
+  font-family: var(--font-d);
+  font-size: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.55);
+}
+
 .work-upcoming {
   width: 100%;
   height: 100%;
