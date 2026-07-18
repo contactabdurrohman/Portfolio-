@@ -100,6 +100,10 @@ const slotLabels = {
 };
 
 const upcomingSlots = new Set(['video', 'sound']);
+const playlistLinks = {
+  video: 'https://www.youtube.com/watch?v=uTkvnba-Uzo&list=PLAdqpHIowGXM',
+  sound: 'https://www.youtube.com/watch?v=RvOwTdjhtgs&list=PLfAQnSgMu5lY'
+};
 
 const preloadedMedia = {
   "design": [
@@ -415,15 +419,17 @@ function renderSlotCard(slot) {
   if (!card) return;
 
   if (upcomingSlots.has(slot)) {
+    const playlistUrl = playlistLinks[slot];
     card.querySelector('.work-thumb').innerHTML = `
       <div class="work-upcoming">
-        <span>Upcoming</span>
+        <span>${slot === 'sound' ? 'Motion Playlist' : 'Video Playlist'}</span>
       </div>
     `;
     card.querySelector('.work-info').innerHTML = `
       <span class="work-tag">${slotLabels[slot]}</span>
-      <h3>Upcoming</h3>
-      <p>New video projects will be added soon.</p>
+      <h3>${slot === 'sound' ? 'Motion Video Playlist' : 'Video Editing Playlist'}</h3>
+      <p>Watch the full ${slot === 'sound' ? 'motion video' : 'video editing'} playlist on YouTube.</p>
+      <a class="playlist-btn" href="${playlistUrl}" target="_blank" rel="noopener">Open Playlist</a>
     `;
     return;
   }
@@ -959,8 +965,6 @@ const navObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(s => navObs.observe(s));
-
-
 
 
 
