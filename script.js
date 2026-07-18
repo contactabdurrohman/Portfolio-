@@ -104,6 +104,10 @@ const playlistLinks = {
   video: 'https://www.youtube.com/watch?v=uTkvnba-Uzo&list=PLAdqpHIowGXM',
   sound: 'https://www.youtube.com/watch?v=RvOwTdjhtgs&list=PLfAQnSgMu5lY'
 };
+const playlistEmbeds = {
+  video: 'https://www.youtube.com/embed/uTkvnba-Uzo?list=PLAdqpHIowGXM',
+  sound: 'https://www.youtube.com/embed/RvOwTdjhtgs?list=PLfAQnSgMu5lY'
+};
 
 const preloadedMedia = {
   "design": [
@@ -420,10 +424,15 @@ function renderSlotCard(slot) {
 
   if (upcomingSlots.has(slot)) {
     const playlistUrl = playlistLinks[slot];
+    const playlistEmbed = playlistEmbeds[slot];
     card.querySelector('.work-thumb').innerHTML = `
-      <div class="work-upcoming">
-        <span>${slot === 'sound' ? 'Motion Playlist' : 'Video Playlist'}</span>
-      </div>
+      <iframe
+        class="playlist-frame"
+        src="${playlistEmbed}"
+        title="${slot === 'sound' ? 'Motion Video Playlist' : 'Video Editing Playlist'}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
     `;
     card.querySelector('.work-info').innerHTML = `
       <span class="work-tag">${slotLabels[slot]}</span>
