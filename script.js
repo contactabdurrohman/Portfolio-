@@ -104,6 +104,10 @@ const playlistLinks = {
   video: 'https://www.youtube.com/watch?v=uTkvnba-Uzo&list=PLAdqpHIowGXM',
   sound: 'https://www.youtube.com/watch?v=RvOwTdjhtgs&list=PLfAQnSgMu5lY'
 };
+const playlistEmbeds = {
+  video: 'https://www.youtube.com/embed/videoseries?list=PLAdqpHIowGXM',
+  sound: 'https://www.youtube.com/embed/videoseries?list=PLfAQnSgMu5lY'
+};
 const playlistThumbs = {
   video: 'https://i.ytimg.com/vi/uTkvnba-Uzo/maxresdefault.jpg',
   sound: 'https://i.ytimg.com/vi/RvOwTdjhtgs/maxresdefault.jpg'
@@ -423,20 +427,28 @@ function renderSlotCard(slot) {
   if (!card) return;
 
   if (upcomingSlots.has(slot)) {
-    const playlistUrl = playlistLinks[slot];
     const playlistThumb = playlistThumbs[slot];
-    card.querySelector('.work-thumb').innerHTML = `
-      <a class="playlist-preview" href="${playlistUrl}" target="_blank" rel="noopener" style="--playlist-thumb: url('${playlistThumb}')">
+    const thumb = card.querySelector('.work-thumb');
+    thumb.innerHTML = `
+      <button class="playlist-preview" type="button" style="--playlist-thumb: url('${playlistThumb}')">
         <span class="playlist-play" aria-hidden="true"></span>
         <strong>${slot === 'sound' ? 'Motion Video' : 'Video Editing'}</strong>
-      </a>
+      </button>
     `;
     card.querySelector('.work-info').innerHTML = `
       <span class="work-tag">${slotLabels[slot]}</span>
       <h3>${slot === 'sound' ? 'Motion Video Playlist' : 'Video Editing Playlist'}</h3>
-      <p>Watch the full ${slot === 'sound' ? 'motion video' : 'video editing'} playlist on YouTube.</p>
-      <a class="playlist-btn" href="${playlistUrl}" target="_blank" rel="noopener">Open Playlist</a>
+      <p>Watch the full ${slot === 'sound' ? 'motion video' : 'video editing'} playlist here.</p>
+      <button class="playlist-btn" type="button">Open Playlist</button>
     `;
+    thumb.querySelector('.playlist-preview').addEventListener('click', e => {
+      e.stopPropagation();
+      openPlaylistViewer(slot);
+    });
+    card.querySelector('.playlist-btn').addEventListener('click', e => {
+      e.stopPropagation();
+      openPlaylistViewer(slot);
+    });
     return;
   }
 
@@ -669,6 +681,40 @@ function openEditViewer(slot, id) {
   document.body.appendChild(modal);
 }
 
+function openPlaylistViewer(slot) {
+  const playlistEmbed = playlistEmbeds[slot];
+  if (!playlistEmbed) return;
+
+  closeMediaViewer();
+  closeSlotViewer();
+
+  const modal = document.createElement('div');
+  modal.className = 'media-viewer playlist-viewer';
+  modal.innerHTML = `
+    <div class="media-viewer-panel playlist-viewer-panel">
+      <button class="media-viewer-close" type="button" aria-label="Close">&times;</button>
+      <div class="media-viewer-stage playlist-viewer-stage">
+        <iframe
+          class="playlist-player"
+          src="${playlistEmbed}"
+          title="${slot === 'sound' ? 'Motion Video Playlist' : 'Video Editing Playlist'}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="media-viewer-info">
+        <h3>${slot === 'sound' ? 'Motion Video Playlist' : 'Video Editing Playlist'}</h3>
+        <p>Play the playlist here and choose videos from the YouTube player controls.</p>
+      </div>
+    </div>
+  `;
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal || e.target.closest('.media-viewer-close')) closeMediaViewer();
+  });
+  document.addEventListener('keydown', closeMediaViewerOnEscape);
+  document.body.appendChild(modal);
+}
 function openMediaViewer(upload) {
   if (upload.externalUrl) {
     window.open(upload.externalUrl, '_blank', 'noopener');
@@ -971,6 +1017,8 @@ const navObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(s => navObs.observe(s));
+
+
 
 
 

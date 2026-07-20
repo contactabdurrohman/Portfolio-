@@ -1,6 +1,6 @@
-/* ============================================================
-   ABDUR RAHMAN PORTFOLIO — STYLE.CSS
-   Theme: Dark Cinematic | Purple × Amber × Cyan
+﻿/* ============================================================
+   ABDUR RAHMAN PORTFOLIO â€” STYLE.CSS
+   Theme: Dark Cinematic | Purple Ã— Amber Ã— Cyan
    ============================================================ */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -484,19 +484,29 @@ h2 {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
   text-decoration: none;
   color: #fff;
-  background:
-    linear-gradient(180deg, rgba(9,8,15,0.04), rgba(9,8,15,0.52)),
-    var(--playlist-thumb) center / cover no-repeat,
-    var(--bg3);
+  background: var(--bg3);
+}
+
+.playlist-preview::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  background: var(--playlist-thumb) center / cover no-repeat;
+  transform: scale(1.12);
 }
 
 .playlist-preview::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 0 24%, rgba(9,8,15,0.34) 74%);
+  background:
+    linear-gradient(180deg, rgba(9,8,15,0.05), rgba(9,8,15,0.58)),
+    radial-gradient(circle at center, transparent 0 24%, rgba(9,8,15,0.28) 74%);
 }
 
 .playlist-play {
@@ -1539,6 +1549,24 @@ h2 {
   object-fit: contain;
 }
 
+.playlist-viewer-panel {
+  width: min(520px, 100%);
+}
+
+.playlist-viewer-stage {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 78vh;
+}
+
+.playlist-player {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #050507;
+}
+
 .media-viewer-info {
   color: var(--white);
   background: rgba(10,9,16,0.92);
@@ -1586,12 +1614,6 @@ h2 {
   font-size: 1.15rem;
 }
 
-.gallery-drive-preview,
-.slot-drive-preview {
-  aspect-ratio: 4/3;
-  min-height: 0;
-}
-
 .media-viewer-close {
   position: absolute;
   top: -12px;
@@ -1613,6 +1635,7 @@ h2 {
   .media-viewer-stage video { max-height: 72vh; }
   .media-viewer-close { top: 8px; right: 8px; }
 }
+
 
 /* Publish version: public visitors can view work, editor controls stay hidden. */
 .nav-links a[href="#upload"],
