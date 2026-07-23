@@ -721,10 +721,11 @@ function openPlaylistViewer(slot) {
           <iframe
             class="playlist-player"
             src="${youtubeEmbedUrl(firstVideo.id, playlistId)}"
-            title="${modalTitle}"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+          title="${modalTitle}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
         </div>
         <div class="playlist-list" role="list"></div>
       </div>
@@ -770,7 +771,7 @@ function youtubeEmbedUrl(videoId, playlistId, autoplay = false) {
     modestbranding: '1'
   });
   if (autoplay) params.set('autoplay', '1');
-  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+  return `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
 }
 function openMediaViewer(upload) {
   if (upload.externalUrl) {
