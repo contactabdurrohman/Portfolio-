@@ -108,9 +108,22 @@ const playlistEmbeds = {
   video: 'https://www.youtube.com/embed/videoseries?list=PLAdqpHIowGXM',
   sound: 'https://www.youtube.com/embed/videoseries?list=PLfAQnSgMu5lY'
 };
+const playlistIds = {
+  video: 'PLAdqpHIowGXM',
+  sound: 'PLfAQnSgMu5lY'
+};
 const playlistThumbs = {
   video: 'https://i.ytimg.com/vi/uTkvnba-Uzo/maxresdefault.jpg',
   sound: 'https://i.ytimg.com/vi/RvOwTdjhtgs/maxresdefault.jpg'
+};
+const playlistVideos = {
+  video: [
+    { id: 'uTkvnba-Uzo', title: 'Promotional Ad Video' }
+  ],
+  sound: [
+    { id: 'RvOwTdjhtgs', title: 'Mirinda' },
+    { id: '-iHmynpr4gw', title: 'Sukkari Khejur Promo' }
+  ]
 };
 
 const preloadedMedia = {
@@ -162,6 +175,13 @@ const preloadedMedia = {
     }
   ],
   "product": [
+    {
+      "fileName": "Ghorer Haat Premium Dates.png",
+      "url": "Product Design/Ghorer%20Haat%20Premium%20Dates.png",
+      "title": "Ghorer Haat Premium Dates",
+      "description": "Premium organic dates product packaging and promotional post.",
+      "isVideo": false
+    },
     {
       "fileName": "ChatGPT Image May 24, 2026, 10_46_29 PM.png",
       "url": "Product Design/ChatGPT%20Image%20May%2024%2C%202026%2C%2010_46_29%20PM.png",
@@ -682,38 +702,75 @@ function openEditViewer(slot, id) {
 }
 
 function openPlaylistViewer(slot) {
-  const playlistEmbed = playlistEmbeds[slot];
-  if (!playlistEmbed) return;
+  const videos = playlistVideos[slot] || [];
+  const firstVideo = videos[0];
+  const playlistId = playlistIds[slot];
+  if (!firstVideo || !playlistId) return;
 
   closeMediaViewer();
   closeSlotViewer();
 
   const modal = document.createElement('div');
+  const modalTitle = slot === 'sound' ? 'Motion Video Playlist' : 'Video Editing Playlist';
   modal.className = 'media-viewer playlist-viewer';
   modal.innerHTML = `
     <div class="media-viewer-panel playlist-viewer-panel">
       <button class="media-viewer-close" type="button" aria-label="Close">&times;</button>
-      <div class="media-viewer-stage playlist-viewer-stage">
-        <iframe
-          class="playlist-player"
-          src="${playlistEmbed}"
-          title="${slot === 'sound' ? 'Motion Video Playlist' : 'Video Editing Playlist'}"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+      <div class="playlist-layout">
+        <div class="media-viewer-stage playlist-viewer-stage">
+          <iframe
+            class="playlist-player"
+            src="${youtubeEmbedUrl(firstVideo.id, playlistId)}"
+            title="${modalTitle}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="playlist-list" role="list"></div>
       </div>
       <div class="media-viewer-info">
-        <h3>${slot === 'sound' ? 'Motion Video Playlist' : 'Video Editing Playlist'}</h3>
-        <p>Play the playlist here and choose videos from the YouTube player controls.</p>
+        <h3>${modalTitle}</h3>
+        <p>Select any video from the playlist and play it here.</p>
       </div>
     </div>
   `;
+
+  const player = modal.querySelector('.playlist-player');
+  const list = modal.querySelector('.playlist-list');
+  videos.forEach((video, index) => {
+    const item = document.createElement('button');
+    item.className = `playlist-item${index === 0 ? ' is-active' : ''}`;
+    item.type = 'button';
+    item.innerHTML = `
+      <img src="https://i.ytimg.com/vi/${video.id}/hqdefault.jpg" alt="${escapeAttribute(video.title)} thumbnail" />
+      <span>
+        <small>${index + 1 < 10 ? '0' : ''}${index + 1}</small>
+        <strong>${escapeHtml(video.title)}</strong>
+      </span>
+    `;
+    item.addEventListener('click', () => {
+      player.src = youtubeEmbedUrl(video.id, playlistId, true);
+      list.querySelectorAll('.playlist-item').forEach(btn => btn.classList.remove('is-active'));
+      item.classList.add('is-active');
+    });
+    list.appendChild(item);
+  });
 
   modal.addEventListener('click', e => {
     if (e.target === modal || e.target.closest('.media-viewer-close')) closeMediaViewer();
   });
   document.addEventListener('keydown', closeMediaViewerOnEscape);
   document.body.appendChild(modal);
+}
+
+function youtubeEmbedUrl(videoId, playlistId, autoplay = false) {
+  const params = new URLSearchParams({
+    list: playlistId,
+    rel: '0',
+    modestbranding: '1'
+  });
+  if (autoplay) params.set('autoplay', '1');
+  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
 }
 function openMediaViewer(upload) {
   if (upload.externalUrl) {
